@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html lang="es">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <input type="number">
+    <button>Calcula</button>
+    <script>
+      // Primero selecciono los elementos que necesito
+      // En primer lugar selecciono la entrada
+      let entrada = document.querySelector("input")
+      // Y luego selecciono el boton
+      let boton = document.querySelector("button")
+      // Cuando pulse el boton, va a pasar algo
+      boton.onclick = function(){
+        // La edad es el valor que haya en el input
+      	let edad = entrada.value
+        if(edad < 10){	// Si la edad es menor que 10
+        	document.write("Eres un niño")
+        }else if(edad >= 10 && edad < 20){ // Si la edad está entre 10 y 20
+        	document.write("Eres un adolescente")
+        }else if(edad >= 20 && edad < 30){// Si la edad está entre 20 y 30
+        	document.write("Eres un joven")
+        }else if(edad >= 30 && edad <40){// Si la edad está entre 30 y 40
+        	document.write("Eres un adulto")
+        }else{	// En caso contrario
+        	document.write("Ya no eres joven")
+        }
+      }
+    </script>
+</body>
+</html>

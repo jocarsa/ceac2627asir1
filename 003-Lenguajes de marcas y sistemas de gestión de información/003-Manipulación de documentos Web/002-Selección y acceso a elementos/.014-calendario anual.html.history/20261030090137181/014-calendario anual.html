@@ -1,0 +1,239 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario anual</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px;
+      background: #f0f2f5;
+      font-family: Arial, sans-serif;
+      color: #273449;
+    }
+
+    .contenedor {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #4263eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #304bc0;
+    }
+
+    #calendario {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .mes {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px #0000000c;
+    }
+
+    .mes h2 {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .dias {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+
+    .semana {
+      text-align: center;
+      padding: 8px 0;
+      font-size: 12px;
+      font-weight: bold;
+      color: #8490a0;
+    }
+
+    .dia {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .dia:hover {
+      background: #e0eaff;
+      color: #2454b8;
+    }
+
+    .dia.hoy {
+      background: #dbeafe;
+      color: #2454b8;
+      font-weight: bold;
+    }
+
+    .dia.seleccionado {
+      background: #4263eb;
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      #calendario {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      body {
+        padding: 15px;
+      }
+
+      #calendario {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <header>
+      <button onclick="cambiarAnio(-1)">&#10094;</button>
+      <h1 id="titulo"></h1>
+      <button onclick="cambiarAnio(1)">&#10095;</button>
+    </header>
+
+    <div id="calendario"></div>
+  </div>
+
+  <script>
+    let anio = new Date().getFullYear();
+    let fechaSeleccionada = "";
+
+    let meses = [
+      "Enero", "Febrero", "Marzo",
+      "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre",
+      "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    let semana = ["L", "M", "X", "J", "V", "S", "D"];
+
+    function pintarCalendario() {
+      let calendario = document.querySelector("#calendario");
+      let titulo = document.querySelector("#titulo");
+
+      calendario.innerHTML = "";
+      titulo.textContent = anio;
+
+      let hoy = new Date();
+
+      // Recorro los 12 meses
+      for (let mes = 0; mes < 12; mes++) {
+
+        let contenedorMes = document.createElement("div");
+        contenedorMes.className = "mes";
+
+        contenedorMes.innerHTML =
+          "<h2>" + meses[mes] + "</h2>";
+
+        let dias = document.createElement("div");
+        dias.className = "dias";
+
+        // Pinto la cabecera de la semana
+        for (let nombre of semana) {
+          dias.innerHTML +=
+            '<div class="semana">' + nombre + '</div>';
+        }
+
+        // Calculo el primer día del mes
+        let primerDia = new Date(anio, mes, 1).getDay();
+
+        // Ajusto para comenzar en lunes
+        let desplazamiento = (primerDia + 6) % 7;
+
+        // Calculo cuántos días tiene el mes
+        let numeroDias = new Date(anio, mes + 1, 0).getDate();
+
+        // Pinto espacios vacíos
+        for (let i = 0; i < desplazamiento; i++) {
+          dias.innerHTML += "<div></div>";
+        }
+
+        // Pinto los días del mes
+        for (let dia = 1; dia <= numeroDias; dia++) {
+
+          let elemento = document.createElement("div");
+          elemento.className = "dia";
+          elemento.textContent = dia;
+
+          let fecha = anio + "-" + mes + "-" + dia;
+
+          if (
+            hoy.getFullYear() === anio &&
+            hoy.getMonth() === mes &&
+            hoy.getDate() === dia
+          ) {
+            elemento.classList.add("hoy");
+          }
+
+          if (fechaSeleccionada === fecha) {
+            elemento.classList.add("seleccionado");
+          }
+
+          elemento.addEventListener("click", function() {
+            fechaSeleccionada = fecha;
+            pintarCalendario();
+          });
+
+          dias.appendChild(elemento);
+        }
+
+        contenedorMes.appendChild(dias);
+        calendario.appendChild(contenedorMes);
+      }
+    }
+
+    function cambiarAnio(cantidad) {
+      anio += cantidad;
+      pintarCalendario();
+    }
+
+    pintarCalendario();
+  </script>
+
+</body>
+</html>

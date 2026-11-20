@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      #calendario{width:600px;height:400px;border:2px solid black;
+      display:grid;grid-template-columns:repeat(7,1fr);}
+      .dia{border:1px solid grey;}
+    </style>
+  </head>
+  <body>
+    <div id="calendario">
+      Este es un contenido estático
+    </div>
+    <script>
+      // Primero selecciono un elemento del documento que tenga el id calendario
+      let calendario = document.querySelector("#calendario")
+      // Ahora no leo sino escribo
+      calendario.textContent = "Este texto lo escribe Javascript"
+ 
+    </script>
+  </body>
+</html>

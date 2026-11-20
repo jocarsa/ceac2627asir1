@@ -1,0 +1,195 @@
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora de edad</title>
+    <style>
+      *{
+        box-sizing:border-box;
+      }
+
+      body{
+        margin:0;
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:20px;
+        padding:20px;
+        background:linear-gradient(135deg,#141e30,#243b55);
+        font-family:Arial,sans-serif;
+        color:white;
+      }
+
+      h1{
+        font-size:32px;
+        margin:0 0 10px 0;
+        text-align:center;
+      }
+
+      p{
+        color:#aabbd0;
+        text-align:center;
+        margin:0 0 15px 0;
+      }
+
+      input{
+        width:300px;
+        padding:20px;
+        border:2px solid rgba(255,255,255,0.2);
+        border-radius:15px;
+        background:rgba(255,255,255,0.1);
+        color:white;
+        font-size:32px;
+        font-weight:bold;
+        text-align:center;
+        outline:none;
+        transition:all 0.3s;
+      }
+
+      input:focus{
+        border-color:#38bdf8;
+        box-shadow:0 0 25px rgba(56,189,248,0.25);
+        transform:scale(1.03);
+      }
+
+      button{
+        width:300px;
+        padding:18px;
+        border:none;
+        border-radius:15px;
+        background:linear-gradient(135deg,#38bdf8,#6366f1);
+        color:white;
+        font-size:18px;
+        font-weight:bold;
+        cursor:pointer;
+        box-shadow:0 10px 25px rgba(0,0,0,0.25);
+        transition:all 0.3s;
+      }
+
+      button:hover{
+        transform:translateY(-4px);
+        box-shadow:0 15px 35px rgba(56,189,248,0.35);
+      }
+
+      button:active{
+        transform:translateY(0);
+      }
+
+      #resultado{
+        display:none;
+        width:300px;
+        padding:30px 20px;
+        border:1px solid rgba(255,255,255,0.2);
+        border-radius:20px;
+        background:rgba(255,255,255,0.1);
+        box-shadow:0 15px 40px rgba(0,0,0,0.2);
+        text-align:center;
+        backdrop-filter:blur(15px);
+        animation:aparecer 0.5s ease;
+      }
+
+      #resultado .icono{
+        font-size:55px;
+        margin-bottom:15px;
+      }
+
+      #resultado .mensaje{
+        font-size:24px;
+        font-weight:bold;
+        color:#7dd3fc;
+      }
+
+      #resultado .detalle{
+        font-size:14px;
+        color:#cbd5e1;
+        margin-top:12px;
+      }
+
+      @keyframes aparecer{
+        from{
+          opacity:0;
+          transform:translateY(20px) scale(0.95);
+        }
+        to{
+          opacity:1;
+          transform:translateY(0) scale(1);
+        }
+      }
+
+      @media(max-width:400px){
+        input,button,#resultado{
+          width:85vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>¿En qué etapa estás?</h1>
+    <p>Introduce tu edad para descubrirlo</p>
+
+    <input type="number" min="0" placeholder="Tu edad">
+    <button>Calcula</button>
+
+    <div id="resultado" aria-live="polite">
+      <div class="icono"></div>
+      <div class="mensaje"></div>
+      <div class="detalle"></div>
+    </div>
+
+    <script>
+      // Primero selecciono los elementos que necesito
+      let entrada = document.querySelector("input")
+      let boton = document.querySelector("button")
+      let resultado = document.querySelector("#resultado")
+
+      // Cuando pulse el botón, va a pasar algo
+      boton.onclick = function(){
+
+        let edad = Number(entrada.value)
+        let mensaje = ""
+        let icono = ""
+        let detalle = ""
+
+        if(entrada.value === "" || edad < 0){
+          mensaje = "Introduce una edad válida"
+          icono = "⚠️"
+          detalle = "La edad debe ser un número positivo"
+        }else if(edad < 10){
+          mensaje = "Eres un niño"
+          icono = "🧸"
+          detalle = "Una etapa llena de descubrimientos"
+        }else if(edad >= 10 && edad < 20){
+          mensaje = "Eres un adolescente"
+          icono = "🎮"
+          detalle = "Una etapa de cambios y aventuras"
+        }else if(edad >= 20 && edad < 30){
+          mensaje = "Eres un joven"
+          icono = "🚀"
+          detalle = "El momento de explorar posibilidades"
+        }else if(edad >= 30 && edad < 40){
+          mensaje = "Eres un adulto"
+          icono = "💼"
+          detalle = "Una etapa de experiencia y proyectos"
+        }else{
+          mensaje = "Ya no eres joven"
+          icono = "🌟"
+          detalle = "La experiencia es un gran valor"
+        }
+
+        // Mostramos el resultado sin borrar la página
+        resultado.querySelector(".icono").textContent = icono
+        resultado.querySelector(".mensaje").textContent = mensaje
+        resultado.querySelector(".detalle").textContent = detalle
+
+        // Reiniciamos la animación
+        resultado.style.display = "none"
+        void resultado.offsetWidth
+        resultado.style.display = "block"
+      }
+    </script>
+  </body>
+</html>

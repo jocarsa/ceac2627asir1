@@ -1,0 +1,382 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario histórico 1978 - Actualidad</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #f0f2f5;
+      color: #273449;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffffee;
+      backdrop-filter: blur(12px);
+      padding: 18px 30px;
+      box-shadow: 0 2px 15px #00000012;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    .controles {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    select, button {
+      padding: 10px 15px;
+      border: 1px solid #d9dfe8;
+      border-radius: 9px;
+      background: white;
+      color: #273449;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button {
+      background: #4263eb;
+      color: white;
+      border-color: #4263eb;
+    }
+
+    button:hover {
+      background: #304bc0;
+    }
+
+    main {
+      max-width: 1450px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .anio {
+      margin-bottom: 50px;
+      scroll-margin-top: 110px;
+    }
+
+    .titulo-anio {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #dfe4ed;
+      color: #4263eb;
+    }
+
+    .meses {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mes {
+      background: white;
+      border-radius: 14px;
+      padding: 17px;
+      box-shadow: 0 4px 15px #00000009;
+      min-width: 0;
+    }
+
+    .mes h3 {
+      font-size: 17px;
+      margin: 0 0 15px;
+      text-align: center;
+    }
+
+    .dias {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 3px;
+    }
+
+    .semana {
+      text-align: center;
+      color: #8993a3;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 5px 0;
+    }
+
+    .dia {
+      aspect-ratio: 1;
+      min-width: 0;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 11px;
+      cursor: pointer;
+      transition: background 0.15s;
+      user-select: none;
+    }
+
+    .dia:hover {
+      background: #dce6ff;
+      color: #2454b8;
+    }
+
+    .fin-semana {
+      background: #f3f5f9;
+      color: #8c96a6;
+    }
+
+    .hoy {
+      background: #dbeafe;
+      color: #2454b8;
+      font-weight: bold;
+    }
+
+    .seleccionado,
+    .dia.seleccionado:hover {
+      background: #4263eb;
+      color: white;
+      font-weight: bold;
+    }
+
+    #informacion {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #273449;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px #00000030;
+      display: none;
+      z-index: 20;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .meses {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 800px) {
+      .meses {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 500px) {
+      .meses {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Calendario histórico · 1978 - <span id="anioActual"></span></h1>
+
+    <div class="controles">
+      <select id="selectorAnio"></select>
+      <button onclick="irAHoy()">Ir a hoy</button>
+    </div>
+  </header>
+
+  <main id="calendario"></main>
+
+  <div id="informacion"></div>
+
+  <script>
+    const inicio = 1978;
+    const hoy = new Date();
+    const fin = hoy.getFullYear();
+
+    const meses = [
+      "Enero", "Febrero", "Marzo", "Abril",
+      "Mayo", "Junio", "Julio", "Agosto",
+      "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    const semana = ["L", "M", "X", "J", "V", "S", "D"];
+
+    const calendario = document.querySelector("#calendario");
+    const selector = document.querySelector("#selectorAnio");
+    const informacion = document.querySelector("#informacion");
+
+    let seleccionado = null;
+
+    document.querySelector("#anioActual").textContent = fin;
+
+    // Construyo todos los años
+    for (let anio = inicio; anio <= fin; anio++) {
+
+      let seccion = document.createElement("section");
+      seccion.className = "anio";
+      seccion.id = "anio-" + anio;
+
+      let titulo = document.createElement("h2");
+      titulo.className = "titulo-anio";
+      titulo.textContent = anio;
+      seccion.appendChild(titulo);
+
+      let contenedorMeses = document.createElement("div");
+      contenedorMeses.className = "meses";
+
+      // Construyo los 12 meses
+      for (let mes = 0; mes < 12; mes++) {
+
+        // En el año actual no muestro meses futuros
+        if (anio === fin && mes > hoy.getMonth()) {
+          break;
+        }
+
+        let contenedorMes = document.createElement("div");
+        contenedorMes.className = "mes";
+
+        let tituloMes = document.createElement("h3");
+        tituloMes.textContent = meses[mes];
+        contenedorMes.appendChild(tituloMes);
+
+        let contenedorDias = document.createElement("div");
+        contenedorDias.className = "dias";
+
+        // Cabecera de la semana
+        for (let nombre of semana) {
+          let etiqueta = document.createElement("div");
+          etiqueta.className = "semana";
+          etiqueta.textContent = nombre;
+          contenedorDias.appendChild(etiqueta);
+        }
+
+        // Primer día del mes, ajustado a lunes
+        let primerDia = new Date(anio, mes, 1).getDay();
+        let desplazamiento = (primerDia + 6) % 7;
+
+        // Espacios vacíos al principio
+        for (let i = 0; i < desplazamiento; i++) {
+          contenedorDias.appendChild(
+            document.createElement("div")
+          );
+        }
+
+        // Número de días del mes
+        let numeroDias = new Date(anio, mes + 1, 0).getDate();
+
+        // En el mes actual, termino en el día de hoy
+        if (anio === fin && mes === hoy.getMonth()) {
+          numeroDias = hoy.getDate();
+        }
+
+        // Construyo los días
+        for (let dia = 1; dia <= numeroDias; dia++) {
+
+          let fecha = new Date(anio, mes, dia);
+          let elemento = document.createElement("div");
+
+          elemento.className = "dia";
+          elemento.textContent = dia;
+
+          // Sábados y domingos
+          if (fecha.getDay() === 0 || fecha.getDay() === 6) {
+            elemento.classList.add("fin-semana");
+          }
+
+          // Día actual
+          if (
+            anio === fin &&
+            mes === hoy.getMonth() &&
+            dia === hoy.getDate()
+          ) {
+            elemento.classList.add("hoy");
+            elemento.id = "dia-hoy";
+          }
+
+          // Selección de fecha
+          elemento.addEventListener("click", function() {
+
+            if (seleccionado) {
+              seleccionado.classList.remove("seleccionado");
+            }
+
+            elemento.classList.add("seleccionado");
+            seleccionado = elemento;
+
+            let texto = fecha.toLocaleDateString("es-ES", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric"
+            });
+
+            informacion.textContent = texto;
+            informacion.style.display = "block";
+          });
+
+          contenedorDias.appendChild(elemento);
+        }
+
+        contenedorMes.appendChild(contenedorDias);
+        contenedorMeses.appendChild(contenedorMes);
+      }
+
+      seccion.appendChild(contenedorMeses);
+      calendario.appendChild(seccion);
+
+      // Añado el año al selector
+      let opcion = document.createElement("option");
+      opcion.value = anio;
+      opcion.textContent = anio;
+      selector.appendChild(opcion);
+    }
+
+    // Navegación directa por año
+    selector.addEventListener("change", function() {
+      document.querySelector("#anio-" + selector.value)
+        .scrollIntoView({ behavior: "smooth" });
+    });
+
+    // Navegación al día actual
+    function irAHoy() {
+      selector.value = fin;
+      document.querySelector("#dia-hoy")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+    }
+
+    // Comenzar mostrando el año actual
+    selector.value = fin;
+    irAHoy();
+  </script>
+
+</body>
+</html>

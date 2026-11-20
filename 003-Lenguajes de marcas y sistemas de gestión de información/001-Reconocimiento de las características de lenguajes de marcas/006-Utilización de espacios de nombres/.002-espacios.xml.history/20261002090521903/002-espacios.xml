@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jocarsa:curriculum xmlns:jocarsa="https://jocarsa.com/curriculum">
+  <jocarsa:datos_personales>
+    <jocarsa:nombre>Jose Vicente</jocarsa:nombre>
+    <jocarsa:apellidos>Carratala Sanchis</jocarsa:apellidos>
+    <jocarsa:emails>
+      <jocarsa:trabajo>info@jocarsa.com</jocarsa:trabajo>
+      <jocarsa:personal>info@josevicentecarratala.com</jocarsa:personal>
+    </jocarsa:emails>
+  </jocarsa:datos_personales>
+  <jocarsa:experiencias>
+    <jocarsa:experiencia>
+      <jocarsa:empresa>CEAC</jocarsa:empresa>
+      <jocarsa:cargo>Profesor</jocarsa:cargo>
+      <jocarsa:inicio>2025-08</jocarsa:inicio>
+      <jocarsa:final>actualmente</jocarsa:final>
+    </jocarsa:experiencia>
+    <jocarsa:experiencia>
+      <jocarsa:empresa>Otra empresa</jocarsa:empresa>
+      <jocarsa:cargo>Profesor</jocarsa:cargo>
+      <jocarsa:inicio>2025-08</jocarsa:inicio>
+      <jocarsa:final>actualmente</jocarsa:final>
+    </jocarsa:experiencia>
+    <jocarsa:experiencia>
+      <jocarsa:empresa>Otra empresa más</jocarsa:empresa>
+      <jocarsa:cargo>Profesor</jocarsa:cargo>
+      <jocarsa:inicio>2025-08</jocarsa:inicio>
+      <jocarsa:final>actualmente</jocarsa:final>
+    </jocarsa:experiencia>
+  </jocarsa:experiencias>
+</jocarsa:curriculum>

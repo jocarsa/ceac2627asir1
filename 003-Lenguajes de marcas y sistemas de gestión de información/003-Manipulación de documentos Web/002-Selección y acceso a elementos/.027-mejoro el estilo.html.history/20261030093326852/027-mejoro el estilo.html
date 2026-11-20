@@ -1,0 +1,106 @@
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora de edad</title>
+    <style>
+      *{
+        box-sizing:border-box;
+      }
+
+      body{
+        margin:0;
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:20px;
+        background:linear-gradient(135deg,#141e30,#243b55);
+        font-family:Arial,sans-serif;
+      }
+
+      input{
+        width:300px;
+        padding:20px;
+        border:2px solid rgba(255,255,255,0.2);
+        border-radius:15px;
+        background:rgba(255,255,255,0.1);
+        color:white;
+        font-size:32px;
+        font-weight:bold;
+        text-align:center;
+        outline:none;
+        box-shadow:0 10px 30px rgba(0,0,0,0.15);
+        transition:all 0.3s;
+      }
+
+      input:focus{
+        border-color:#38bdf8;
+        background:rgba(255,255,255,0.15);
+        box-shadow:0 0 25px rgba(56,189,248,0.25);
+        transform:scale(1.03);
+      }
+
+      button{
+        width:300px;
+        padding:18px;
+        border:none;
+        border-radius:15px;
+        background:linear-gradient(135deg,#38bdf8,#6366f1);
+        color:white;
+        font-size:18px;
+        font-weight:bold;
+        letter-spacing:1px;
+        cursor:pointer;
+        box-shadow:0 10px 25px rgba(0,0,0,0.25);
+        transition:all 0.3s;
+      }
+
+      button:hover{
+        transform:translateY(-4px);
+        box-shadow:0 15px 35px rgba(56,189,248,0.35);
+        filter:brightness(1.1);
+      }
+
+      button:active{
+        transform:translateY(0);
+      }
+
+      @media(max-width:400px){
+        input,button{
+          width:85vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <input type="number">
+    <button>Calcula</button>
+    <script>
+      // Primero selecciono los elementos que necesito
+      // En primer lugar selecciono la entrada
+      let entrada = document.querySelector("input")
+      // Y luego selecciono el boton
+      let boton = document.querySelector("button")
+      // Cuando pulse el boton, va a pasar algo
+      boton.onclick = function(){
+        // La edad es el valor que haya en el input
+        let edad = entrada.value
+        if(edad < 10){ // Si la edad es menor que 10
+          document.write("Eres un niño")
+        }else if(edad >= 10 && edad < 20){ // Si la edad está entre 10 y 20
+          document.write("Eres un adolescente")
+        }else if(edad >= 20 && edad < 30){// Si la edad está entre 20 y 30
+          document.write("Eres un joven")
+        }else if(edad >= 30 && edad <40){// Si la edad está entre 30 y 40
+          document.write("Eres un adulto")
+        }else{ // En caso contrario
+          document.write("Ya no eres joven")
+        }
+      }
+    </script>
+  </body>
+</html>

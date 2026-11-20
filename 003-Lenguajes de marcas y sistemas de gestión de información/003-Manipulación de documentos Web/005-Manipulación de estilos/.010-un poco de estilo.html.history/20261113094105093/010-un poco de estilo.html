@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+    <style>
+      body,html{background:grey;}
+      header,main,footer{padding:40px;width:800px;margin:auto;background:white;}
+    </style>
+	</head>
+	<body> 
+    <header>
+      <h1>El blog de Jose Vicente</h1>
+    </header>
+    <main>
+      <!-- Lo que quiero es que los articulos vayan aqui -->
+    </main>
+    <footer>
+      (c) 2026 Jose Vicente Carratala
+    </footer>
+    <!-- Aqui quiero poner los datos -->
+		<script>
+      let principal = document.querySelector("main")		// Selecciono la etiqueta main
+			fetch("articulos.json") 		// Traeme el archivo articulos.json
+			.then(function(retorno){return retorno.json()}) // Viene como JSON
+			.then(function(datos){ 									// Cuando lleguen los datos
+				console.log(datos)										// Pintamelos en la consola
+        datos.forEach(function(articulo){ 		// Para cada articulo en los datos
+          // Escribo el título
+        	principal.innerHTML += "<h3>"+articulo.titulo+"</h3>"
+          // Escribo la fecha
+          principal.innerHTML += "<time>"+articulo.fecha+"</time>"	
+          // Escribo el contenido
+          principal.innerHTML += "<p>"+articulo.contenido+"</p>"	
+        })
+			})
+		</script>
+	</body>
+</html>

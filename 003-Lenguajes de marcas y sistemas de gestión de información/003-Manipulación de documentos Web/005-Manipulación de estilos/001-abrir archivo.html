@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script>
+			fetch("datos.json") 		// Traeme el archivo datos.json
+			.then(function(retorno){return retorno.json()}) // Viene como JSON
+			.then(function(datos){ 		// Cuando lleguen los datos
+				console.log(datos)		// Pintamelos en la consola
+			})
+		</script>
+	</body>
+</html>

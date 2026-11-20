@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script>
+      // Primero le pregunto al usuario por la base y la meto en una variable
+      let base_imponible = prompt("Indica la base")
+      // Ahora calculamos el IVA
+      let iva = base_imponible*0.21
+      // Calculamos el total
+      let total = base_imponible*1 + iva*1 // conversión implícita
+      // Sacamos el resultado por pantalla
+      document.write(total)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{
+	"datos_personales":{
+  	"nombre":"Jose Vicente",
+    "apellidos":"Carratala Sanchis",
+    "email":{
+    	"empresa":"info@jocarsa.com",
+      "personal":"info@josevicentecarratala.com"
+    }
+  },
+  "experiencia_profesional":[
+    {
+    	"empresa":"CEAC",
+      "puesto":"Profesor de Ciclos Formativos",
+      "inicio":"2025-08",
+      "final":"en curso"
+    }, 
+    {
+    	"empresa":"CEAC",
+      "puesto":"Profesor de Ciclos Formativos",
+      "inicio":"2025-08",
+      "final":"en curso"
+    },
+    {
+    	"empresa":"CEAC",
+      "puesto":"Profesor de Ciclos Formativos",
+      "inicio":"2025-08",
+      "final":"en curso"
+    }
+  ],
+  "formacion":[
+    {},{},{}
+  ],
+  "idiomas":"",
+  "hobbies":""
+}

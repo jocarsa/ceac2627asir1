@@ -1,0 +1,162 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de IVA</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #dbeafe, #f5f3ff);
+      font-family: Arial, sans-serif;
+      color: #1e293b;
+    }
+
+    .calculadora {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 20px 50px #33415522;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    p {
+      color: #64748b;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 25px 0 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 20px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #6366f1;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 20px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    .resultado {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 12px;
+    }
+
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .total {
+      font-size: 23px;
+      font-weight: bold;
+      color: #4f46e5;
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculadora">
+    <h1>Calculadora de IVA</h1>
+    <p>Calcula el importe total con IVA incluido</p>
+
+    <label for="base">Base imponible (€)</label>
+    <input
+      type="number"
+      id="base"
+      placeholder="Introduce un importe"
+      min="0"
+      step="0.01"
+    >
+
+    <button onclick="calcular()">Calcular IVA</button>
+
+    <div class="resultado">
+      <div class="fila">
+        <span>Base imponible</span>
+        <span id="base_resultado">0,00 €</span>
+      </div>
+
+      <div class="fila">
+        <span>IVA (21%)</span>
+        <span id="iva_resultado">0,00 €</span>
+      </div>
+
+      <div class="fila total">
+        <span>Total</span>
+        <span id="total_resultado">0,00 €</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calcular() {
+      // Primero obtenemos la base imponible
+      let base_imponible =
+        Number(document.querySelector("#base").value);
+
+      // Calculamos el IVA
+      let iva = base_imponible * 0.21;
+
+      // Calculamos el total
+      let total = base_imponible + iva;
+
+      // Mostramos los resultados por pantalla
+      document.querySelector("#base_resultado").textContent =
+        base_imponible.toFixed(2) + " €";
+
+      document.querySelector("#iva_resultado").textContent =
+        iva.toFixed(2) + " €";
+
+      document.querySelector("#total_resultado").textContent =
+        total.toFixed(2) + " €";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora de edad</title>
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    <p>Introduce tu altura</p>
+    <input type="text" id="altura">
+    <p>Ahora introcuce tu peso</p>
+    <input type="text" id="peso">
+    <button>Calcula mi IMC</button>
+    <output></output>
+    <script>
+      // Primero selecciono elementos
+      // Cojo el input de la altura
+      let altura = document.querySelector("#altura")
+      // Cojo el input del peso
+      let peso = document.querySelector("#peso")
+      // Cojo el boton
+      let boton = document.querySelector("button")
+      // Cojo la salida
+      let salida = document.querySelector("output")
+      
+      // Escucho el click del boton
+      boton.onclick = function(){	// Esto es una función anónima
+        // Calculo el indice
+      	let indice = peso.value*1 / (altura.value*1 * altura.value*1)
+        if(indice < 16){
+        	salida.textContent = "Delgadez severa"
+        }else if(indice >= 16 && indice < 16.9){
+        	salida.textContent = "Delgadez moderada"
+        }else if(indice >= 16.9 && indice < 18.4){
+        	salida.textContent = "Delgadez leve"
+        }else if(indice >= 18.4 && indice < 24.9){
+        	salida.textContent = "Peso normal"
+        }else if(indice >= 24.9 && indice < 29.9){
+        	salida.textContent = "Sobrepeso"
+        }else if(indice >= 29.9 && indice < 34.9){
+        	salida.textContent = "	Obesidad grado I"
+        }else if(indice >= 34.9 && indice < 39.9){
+        	salida.textContent = "	Obesidad grado II"
+        }else if(indice >= 40){
+        	salida.textContent = "	Obesidad grado III"
+        }
+      }
+    </script>
+  </body>
+</html>

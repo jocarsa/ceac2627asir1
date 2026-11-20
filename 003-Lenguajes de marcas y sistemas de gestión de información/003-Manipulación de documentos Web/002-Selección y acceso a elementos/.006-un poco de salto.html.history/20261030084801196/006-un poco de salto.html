@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      #calendario{width:600px;height:400px;border:2px solid black;
+      display:grid;grid-template-columns:repeat(7,1fr);}
+      .dia{border:1px solid grey;}
+    </style>
+  </head>
+  <body>
+    <script>
+      // Primero establecemos la condicion de inicio dia = 1
+      // Luego establecemos la condicion de final dia < 31
+      // Por ultimo establecemos el incremento dia++
+      for(let dia = 1;dia < 31;dia++){
+      	document.write("Yo soy el dia "+dia+" del mes<br>");
+      }
+    </script>
+  </body>
+</html>

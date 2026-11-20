@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Mi calendario</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f2f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .contenedor {
+      width: 700px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px #00000015;
+    }
+
+    h1 {
+      margin: 0 0 25px;
+      font-size: 28px;
+      color: #273449;
+    }
+
+    #calendario {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .semana {
+      text-align: center;
+      padding: 12px 0;
+      color: #7a8495;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .dia {
+      height: 75px;
+      border: 1px solid #e8ebf0;
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8f9fc;
+      color: #344054;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dia:hover {
+      background: #e0eaff;
+      border-color: #769df5;
+      color: #2454b8;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 12px #00000012;
+    }
+
+    .dia.seleccionado {
+      background: #4263eb;
+      color: white;
+      border-color: #4263eb;
+    }
+
+    .vacio {
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h1>Mi calendario</h1>
+    <div id="calendario"></div>
+  </div>
+
+  <script>
+    // Selecciono el calendario
+    let calendario = document.querySelector("#calendario");
+
+    // Creo los nombres de los días
+    let semana = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+
+    for (let nombre of semana) {
+      calendario.innerHTML +=
+        '<div class="semana">' + nombre + '</div>';
+    }
+
+    // Pinto 30 días
+    for (let dia = 1; dia <= 30; dia++) {
+      calendario.innerHTML +=
+        '<div class="dia">' + dia + '</div>';
+    }
+
+    // Permito seleccionar un día
+    let dias = document.querySelectorAll(".dia");
+
+    for (let elemento of dias) {
+      elemento.addEventListener("click", function() {
+        for (let otro of dias) {
+          otro.classList.remove("seleccionado");
+        }
+        elemento.classList.add("seleccionado");
+      });
+    }
+  </script>
+
+</body>
+</html>

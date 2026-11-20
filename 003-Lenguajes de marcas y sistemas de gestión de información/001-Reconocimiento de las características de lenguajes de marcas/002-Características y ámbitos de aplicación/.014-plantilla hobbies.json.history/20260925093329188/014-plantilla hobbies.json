@@ -1,0 +1,69 @@
+{
+	"datos_personales":{
+  	"nombre":"Jose Vicente",
+    "apellidos":"Carratala Sanchis",
+    "email":{
+    	"empresa":"info@jocarsa.com",
+      "personal":"info@josevicentecarratala.com"
+    }
+  },
+  "experiencia_profesional":[
+    {
+    	"empresa":"CEAC",
+      "puesto":"Profesor de Ciclos Formativos",
+      "inicio":"2025-08",
+      "final":"en curso"
+    }, 
+    {
+    	"empresa":"CEAC",
+      "puesto":"Profesor de Ciclos Formativos",
+      "inicio":"2025-08",
+      "final":"en curso"
+    },
+    {
+    	"empresa":"CEAC",
+      "puesto":"Profesor de Ciclos Formativos",
+      "inicio":"2025-08",
+      "final":"en curso"
+    }
+  ],
+  "formacion":[
+    {
+    	"centro":"XXXXX",
+      "titulacion":"XXXXX",
+      "inicio":"YYYY-MM",
+      "final":"YYYY-MM"
+    },
+    {
+    	"centro":"XXXXX",
+      "titulacion":"XXXXX",
+      "inicio":"YYYY-MM",
+      "final":"YYYY-MM"
+    },
+    {
+    	"centro":"XXXXX",
+      "titulacion":"XXXXX",
+      "inicio":"YYYY-MM",
+      "final":"YYYY-MM"
+    }
+  ],
+  "idiomas":[
+    {
+    	"idioma":"español",
+      "nivel":"nativo"
+    },
+    {
+    	"idioma":"inglés",
+      "nivel":"fluido"
+    },
+    {
+    	"idioma":"francés",
+      "nivel":"básico"
+    },
+    {
+    	"idioma":"alemán",
+      "nivel":"básico"
+    },
+  ],
+  "hobbies":[{},{},{}]
+}

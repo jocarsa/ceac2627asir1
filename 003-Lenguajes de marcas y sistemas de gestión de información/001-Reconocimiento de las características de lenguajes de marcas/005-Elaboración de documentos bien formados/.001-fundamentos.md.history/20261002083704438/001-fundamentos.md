@@ -1,0 +1,1 @@
+Los archivos JSON/XML son archivos de datos

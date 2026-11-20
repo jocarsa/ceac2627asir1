@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body> 
+    <!-- Aqui quiero poner los datos -->
+		<script>
+			fetch("curriculum.json") 		// Traeme el archivo datos.json
+			.then(function(retorno){return retorno.json()}) // Viene como JSON
+			.then(function(datos){ 		// Cuando lleguen los datos
+				console.log(datos)		// Pintamelos en la consola
+        console.log(datos.datos_personales.nombre)
+			})
+		</script>
+	</body>
+</html>

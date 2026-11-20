@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body> 
+    <!-- Aqui quiero poner los datos -->
+		<script>
+			fetch("articulos.json") 		// Traeme el archivo articulos.json
+			.then(function(retorno){return retorno.json()}) // Viene como JSON
+			.then(function(datos){ 									// Cuando lleguen los datos
+				console.log(datos)										// Pintamelos en la consola
+        datos.forEach(function(articulo){ 		// Para cada articulo en los datos
+        	document.write(articulo.titulo)			// Pinto a lo bestia el titulo
+          document.write(articulo.fecha)			// Pinto a lo bestia la fecha
+          document.write(articulo.contenido)	// Pinto a lo bestia el contenido
+        })
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body> 
+    <!-- Aqui quiero poner los datos -->
+		<script>
+			fetch("articulos.json") 		// Traeme el archivo articulos.json
+			.then(function(retorno){return retorno.json()}) // Viene como JSON
+			.then(function(datos){ 		// Cuando lleguen los datos
+				console.log(datos)		// Pintamelos en la consola
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <h1>La web de Jose Vicente</h1>
+      <nav>
+        <button id="inicio">Inicio</button>
+        <button id="sobremi">Sobre mi</button>
+        <button id="blog">Blog</button>
+        <button id="contacto">Contacto</button>
+      </nav>
+    </header>
+    <main>
+      <section id="seccioninicio">
+        <h3>Inicio</h3>
+        <p>Esta es la sección de inicio</p>
+      </section>
+      <section id="seccionsobremi">
+        <h3>Sobre mi</h3>
+        <p>Esta es la sección de sobre mi</p>
+      </section>
+      <section id="seccionblog">
+        <h3>Blog</h3>
+        <p>Esta es la sección del blog</p>
+      </section>
+      <section id="seccioncontacto">
+        <h3>Contacto</h3>
+        <p>Esta es la sección de contacto</p>
+      </section>
+    </main>
+    <footer>
+      (c) 2026 Jose Vicente Carratala
+    </footer>
+    <script>
+      // Primero selecciono los elementos SECCIONES
+      let seccioninicio = document.querySelector("#seccioninicio")
+      let seccionsobremi = document.querySelector("#seccionsobremi")
+      let seccionblog = document.querySelector("#seccionblog")
+      let seccioncontacto = document.querySelector("#seccioncontacto")
+      
+      // Y ahora los oculto
+      seccioninicio.style.display = "none"
+      seccionsobremi.style.display = "none"
+      seccionblog.style.display = "none"
+      seccioncontacto.style.display = "none"
+      
+      // Selecciono los botones - ESTO NO SELECCIONA SINO BOTONES
+      let inicio = document.querySelector("#inicio")
+      let sobremi = document.querySelector("#sobremi")
+      let blog = document.querySelector("#blog")
+      let contacto = document.querySelector("#contacto")
+      
+      // Ahora le doy función a los botones
+      inicio.onclick = function(){	// Cuando haga click en inicio
+      	seccioninicio.style.display = "block"
+        seccionsobremi.style.display = "none"
+        seccionblog.style.display = "none"
+        seccioncontacto.style.display = "none"
+      }
+      
+      sobremi.onclick = function(){	// Cuando haga click en sobremi
+      	seccioninicio.style.display = "none"
+        seccionsobremi.style.display = "block"
+        seccionblog.style.display = "none"
+        seccioncontacto.style.display = "none"
+      }
+      
+      blog.onclick = function(){	// Cuando haga click en sobremi
+      	seccioninicio.style.display = "none"
+        seccionsobremi.style.display = "none"
+        seccionblog.style.display = "block"
+        seccioncontacto.style.display = "none"
+      }
+      
+      contacto.onclick = function(){	// Cuando haga click en sobremi
+      	seccioninicio.style.display = "none"
+        seccionsobremi.style.display = "none"
+        seccionblog.style.display = "none"
+        seccioncontacto.style.display = "block"
+      }
+    </script>
+  </body>
+</html>
+
+
+
+

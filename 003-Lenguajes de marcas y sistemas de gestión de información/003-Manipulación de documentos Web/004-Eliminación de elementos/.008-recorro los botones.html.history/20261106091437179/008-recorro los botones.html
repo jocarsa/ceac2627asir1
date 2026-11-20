@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body{background:lightgray;}
+      header,main,footer{background:white;padding:40px;width:400px;margin:auto;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>La web de Jose Vicente</h1>
+      <nav>
+        <button id="inicio">Inicio</button>
+        <button id="sobremi">Sobre mi</button>
+        <button id="blog">Blog</button>
+        <button id="contacto">Contacto</button>
+      </nav>
+    </header>
+    <main>
+      <section miseccion="inicio">
+        <h3>Inicio</h3>
+        <p>Esta es la sección de inicio</p>
+      </section>
+      <section miseccion="sobremi">
+        <h3>Sobre mi</h3>
+        <p>Esta es la sección de sobre mi</p>
+      </section>
+      <section miseccion="blog">
+        <h3>Blog</h3>
+        <p>Esta es la sección del blog</p>
+      </section>
+      <section miseccion="contacto">
+        <h3>Contacto</h3>
+        <p>Esta es la sección de contacto</p>
+      </section>
+    </main>
+    <footer>
+      (c) 2026 Jose Vicente Carratala
+    </footer>
+    <script>
+      // Quiero seleccionar los botones pero todos de golpe
+let botones = document.querySelectorAll("button")
+
+// Ahora quiero sacarlo por pantalla
+console.log(botones)
+
+// Ahora hay que recorrer los botones
+botones.forEach(function(boton){
+
+  // Cuando pulse cada uno de los botones
+  boton.onclick = function(){
+
+    console.log("Me has hecho click")
+
+    // Obtengo el identificador del botón pulsado
+    let identificador = boton.getAttribute("id")
+
+    // Selecciono todas las secciones
+    let secciones = document.querySelectorAll("section")
+
+    // Y para cada sección
+    secciones.forEach(function(seccion){
+
+      // Oculto todas las secciones
+      seccion.style.display = "none"
+
+    })
+
+    // Muestro únicamente la sección correspondiente
+    document.querySelector("section[miseccion='"+identificador+"']").style.display = "block"
+
+  }
+})
+    </script>
+  </body>
+</html>
+
+
+
+

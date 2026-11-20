@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <section>
+      <!-- aquí dentro no hay nada -->
+    </section>
+    <script>
+      // Quiero añadir elementos dinámicamente
+      let seccion = document.querySelector("section")
+      for(let i = 0;i<20;i++){
+        seccion.innerHTML += `
+          <article>
+            <h3>Yo soy un articulo</h3>
+            <p>Yo soy un texto</p>
+          </article>
+        `
+      }
+    </script>
+  </body>
+</html>

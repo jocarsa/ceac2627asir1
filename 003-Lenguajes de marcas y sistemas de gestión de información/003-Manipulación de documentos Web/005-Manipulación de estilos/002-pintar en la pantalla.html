@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+    
+   
+	</head>
+	<body>
+    <!-- Aqui quiero poner los datos -->
+    <div id="nombre"></div>
+    <div id="apellidos"></div>
+    <div id="email"></div>
+    <!-- Aqui quiero poner los datos -->
+		<script>
+			fetch("datos.json") 		// Traeme el archivo datos.json
+			.then(function(retorno){return retorno.json()}) // Viene como JSON
+			.then(function(datos){ 		// Cuando lleguen los datos
+				console.log(datos)		// Pintamelos en la consola
+        // Estos son los datos que quiero pintar
+        // En el elemento que tiene el id nombre, le pongo, de los datos, el nombre
+        document.querySelector("#nombre").textContent = datos.nombre
+        // En el elemento que tiene el id apellidos, le pongo, de los datos, los apellidos
+        document.querySelector("#apellidos").textContent = datos.apellidos
+        // En el elemento que tiene el id email, le pongo, de los datos, el email
+        document.querySelector("#email").textContent = datos.email
+			})
+		</script>
+	</body>
+</html>

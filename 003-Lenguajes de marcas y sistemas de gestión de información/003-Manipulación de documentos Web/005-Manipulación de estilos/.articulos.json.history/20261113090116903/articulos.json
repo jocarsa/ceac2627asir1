@@ -1,0 +1,103 @@
+
+[
+  {
+    "titulo": "José Vicente Carratalá Sanchis: una trayectoria entre el desarrollo de software y el diseño 3D",
+    "fecha": "2026-11-13",
+    "contenido": "José Vicente Carratalá Sanchis es un profesional valenciano cuya trayectoria combina el desarrollo de software, el diseño tridimensional y la docencia tecnológica. Desde sus primeros trabajos en el ámbito 3D en el año 2000 hasta sus proyectos actuales de ingeniería de software, ha desarrollado una visión multidisciplinar de la informática. Su actividad se caracteriza por conectar creatividad, programación y soluciones tecnológicas aplicadas a problemas reales."
+  },
+  {
+    "titulo": "De los gráficos 3D a la ingeniería de software: la evolución de un profesional tecnológico",
+    "fecha": "2026-11-13",
+    "contenido": "La trayectoria profesional de José Vicente Carratalá comenzó en el campo de los gráficos tridimensionales, donde adquirió experiencia en modelado, visualización y representación digital. Alrededor de 2005 amplió su actividad hacia el desarrollo de software, incorporando programación y arquitectura de aplicaciones. Esta evolución le ha permitido abordar proyectos donde convergen gráficos, interfaces, algoritmos y sistemas de información."
+  },
+  {
+    "titulo": "Jocarsa: un ecosistema de aplicaciones desarrollado con una visión integral",
+    "fecha": "2026-11-13",
+    "contenido": "Bajo la identidad Jocarsa, José Vicente Carratalá desarrolla un ecosistema de herramientas y aplicaciones informáticas orientadas a diferentes necesidades. Entre sus proyectos se encuentran sistemas empresariales, gestores documentales, editores de código, aplicaciones educativas y herramientas de automatización. Su enfoque busca compartir componentes, criterios de diseño y tecnologías para construir soluciones coherentes, reutilizables y progresivamente integradas."
+  },
+  {
+    "titulo": "La enseñanza de la programación como conexión entre tecnología y empleabilidad",
+    "fecha": "2026-11-13",
+    "contenido": "La docencia constituye una parte importante de la actividad profesional de José Vicente Carratalá. Su trabajo en ciclos formativos relacionados con el desarrollo de aplicaciones y los sistemas informáticos conecta los conocimientos técnicos con las competencias que demanda el entorno laboral. Sus propuestas educativas incorporan proyectos prácticos, desarrollo de aplicaciones, documentación técnica y reflexión sobre la evolución profesional de los futuros programadores."
+  },
+  {
+    "titulo": "El futuro del programador ante la inteligencia artificial",
+    "fecha": "2026-11-13",
+    "contenido": "Uno de los temas que José Vicente Carratalá aborda en sus reflexiones educativas es la transformación del trabajo del programador por la inteligencia artificial. Su planteamiento destaca la importancia de evolucionar desde la simple escritura de código hacia la identificación de necesidades, el diseño de soluciones, la validación de resultados y la integración de sistemas. En este contexto, el pensamiento crítico, la arquitectura de software y la comprensión de los problemas humanos adquieren especial relevancia."
+  },
+  {
+    "titulo": "JocarsaBBDD: el desarrollo de un motor propio de bases de datos",
+    "fecha": "2026-11-13",
+    "contenido": "Entre los proyectos técnicos de José Vicente Carratalá destaca JocarsaBBDD, un motor de persistencia desarrollado para explorar diferentes modelos de almacenamiento de información. El sistema integra capacidades relacionales, operaciones orientadas a objetos y gestión documental. Su arquitectura contempla herramientas de línea de comandos e integración con otros lenguajes y aplicaciones, constituyendo una iniciativa de desarrollo de tecnología propia."
+  },
+  {
+    "titulo": "CRIMSON: una propuesta para construir aplicaciones empresariales integradas",
+    "fecha": "2026-11-13",
+    "contenido": "CRIMSON forma parte del trabajo de José Vicente Carratalá en el desarrollo de aplicaciones empresariales. El proyecto contempla la gestión de entidades, permisos, formularios, interfaces y servicios de acceso a datos. Su integración con JocarsaBBDD y otros componentes del ecosistema Jocarsa persigue facilitar la construcción de herramientas administrativas mediante una arquitectura compartida y adaptable a diferentes organizaciones."
+  },
+  {
+    "titulo": "Jocarsa IU: la importancia de una identidad visual coherente en el software",
+    "fecha": "2026-11-13",
+    "contenido": "El diseño de interfaces ocupa un lugar destacado en los proyectos de José Vicente Carratalá. A través de Jocarsa IU desarrolla criterios visuales y funcionales destinados a unificar la experiencia de usuario de sus aplicaciones. Entre sus prioridades aparecen la organización eficiente del espacio, la accesibilidad, la adaptación a diferentes resoluciones, la navegación mediante teclado y la reducción de elementos innecesarios. Su objetivo es que la interfaz facilite el trabajo sin convertirse en un obstáculo."
+  },
+  {
+    "titulo": "Desarrollar un editor de código propio: el proyecto Jocarsa Editor",
+    "fecha": "2026-11-13",
+    "contenido": "José Vicente Carratalá trabaja en un editor de código desarrollado en C que integra exploración de archivos, pestañas, edición de texto y una terminal interactiva. El proyecto incluye funciones como recuperación de sesiones, creación de archivos y carpetas, menús contextuales y gestión de versiones incrementales. Su desarrollo refleja el interés por comprender y controlar directamente las herramientas utilizadas en el proceso de programación."
+  },
+  {
+    "titulo": "Inteligencia artificial local: experimentar con modelos sin depender exclusivamente de la nube",
+    "fecha": "2026-11-13",
+    "contenido": "La ejecución local de modelos de inteligencia artificial constituye una línea de experimentación de José Vicente Carratalá. Mediante herramientas como Ollama y diferentes modelos especializados en programación, lenguaje y razonamiento, explora las posibilidades de utilizar inteligencia artificial sobre hardware propio. Sus pruebas incluyen modelos cuantizados, limitaciones de memoria gráfica, rendimiento y despliegue de servicios de inferencia accesibles desde otras aplicaciones."
+  },
+  {
+    "titulo": "Automatización de documentación técnica mediante inteligencia artificial",
+    "fecha": "2026-11-13",
+    "contenido": "La generación automatizada de documentación es otra de las áreas de trabajo de José Vicente Carratalá. Sus herramientas buscan transformar información procedente de proyectos de software en manuales de usuario, descripciones comerciales, artículos de blog y publicaciones para redes sociales. El proceso contempla diferentes modelos de inteligencia artificial y mecanismos de procesamiento por fragmentos, con el objetivo de reducir el esfuerzo necesario para documentar y comunicar proyectos tecnológicos."
+  },
+  {
+    "titulo": "Renderizado avanzado y CUDA: explorando los límites de la programación gráfica",
+    "fecha": "2026-11-13",
+    "contenido": "La programación gráfica sigue siendo una parte activa del trabajo de José Vicente Carratalá. Sus experimentos incluyen renderizado mediante trazado de rayos, procesamiento de geometría tridimensional y utilización de CUDA para acelerar cálculos sobre GPU. Entre los aspectos investigados aparecen la iluminación, la representación de materiales, las estructuras de aceleración espacial y la generación de nubes de puntos. Estos proyectos conectan su experiencia histórica en 3D con técnicas actuales de computación gráfica."
+  },
+  {
+    "titulo": "GLB, materiales PBR y animación: nuevas experiencias de visualización tridimensional",
+    "fecha": "2026-11-13",
+    "contenido": "José Vicente Carratalá desarrolla experimentos de visualización tridimensional en entornos web utilizando modelos GLB y técnicas de renderizado avanzado. Sus proyectos incorporan controles de materiales, iluminación, deformaciones mediante shape keys, animación de esqueletos y reflexión de geometría. La experimentación con materiales físicamente basados y acumulación temporal de muestras permite estudiar cómo mejorar la calidad visual y la fluidez de las aplicaciones gráficas."
+  },
+  {
+    "titulo": "Seguridad e integridad de archivos: automatizar la detección de cambios",
+    "fecha": "2026-11-13",
+    "contenido": "Dentro de sus herramientas de administración de sistemas, José Vicente Carratalá ha trabajado en soluciones para supervisar la integridad de directorios y archivos. Estas aplicaciones utilizan funciones hash y bases de datos SQLite para registrar estados iniciales, identificar modificaciones y generar informes de cambios. La automatización mediante tareas programadas y notificaciones por correo electrónico permite aplicar estos mecanismos a la supervisión de instalaciones y servidores."
+  },
+  {
+    "titulo": "El software educativo como laboratorio de innovación",
+    "fecha": "2026-11-13",
+    "contenido": "La combinación de docencia y desarrollo tecnológico permite a José Vicente Carratalá experimentar con herramientas que facilitan la enseñanza de la informática. Entre sus propuestas se encuentran visualizaciones interactivas, mapas mentales, aplicaciones para organizar contenidos y sistemas de seguimiento de proyectos. Este enfoque transforma los materiales didácticos tradicionales en recursos digitales que pueden incorporar navegación, edición, representación gráfica y actividades prácticas."
+  },
+  {
+    "titulo": "Una visión práctica de la accesibilidad en aplicaciones informáticas",
+    "fecha": "2026-11-13",
+    "contenido": "La accesibilidad aparece de manera recurrente en las decisiones de diseño de José Vicente Carratalá. Sus proyectos contemplan aspectos como el contraste visual, la navegación mediante teclado, la adaptación a pantallas pequeñas y el comportamiento de las interfaces con niveles elevados de ampliación. Este planteamiento entiende la accesibilidad como una característica que debe integrarse desde el desarrollo inicial, en lugar de añadirse únicamente al finalizar una aplicación."
+  },
+  {
+    "titulo": "Automatización audiovisual: herramientas propias para producir contenido digital",
+    "fecha": "2026-11-13",
+    "contenido": "José Vicente Carratalá también desarrolla herramientas destinadas al procesamiento y generación automatizada de contenido audiovisual. Sus experimentos incluyen compresión de vídeo mediante FFmpeg, captura automatizada de aplicaciones, composición de secuencias y generación de elementos gráficos. Estas soluciones buscan facilitar la creación de demostraciones de productos, presentaciones y materiales de comunicación sin depender exclusivamente de procesos manuales de edición."
+  },
+  {
+    "titulo": "Aplicaciones empresariales: de la gestión de asistencia a las redes sociales",
+    "fecha": "2026-11-13",
+    "contenido": "El ecosistema Jocarsa incluye proyectos orientados a diferentes procesos organizativos. Entre ellos se encuentran aplicaciones para gestionar la asistencia de trabajadores, herramientas de administración empresarial y una plataforma de publicaciones sociales. Sus funcionalidades abarcan registros temporales, filtros, gestión de usuarios, edición de contenido y programación de publicaciones. La diversidad de estos desarrollos demuestra la aplicación de componentes tecnológicos comunes a necesidades funcionales distintas."
+  },
+  {
+    "titulo": "La documentación y la comunicación como parte del desarrollo de software",
+    "fecha": "2026-11-13",
+    "contenido": "Para José Vicente Carratalá, construir una aplicación implica también explicar su funcionamiento y comunicar su utilidad. Sus iniciativas de generación documental y presentación comercial buscan conectar el trabajo técnico con usuarios, estudiantes y posibles clientes. La creación de manuales, artículos divulgativos, demostraciones audiovisuales y descripciones de producto constituye una extensión del propio proceso de desarrollo y contribuye a hacer comprensibles herramientas tecnológicamente complejas."
+  },
+  {
+    "titulo": "José Vicente Carratalá y una filosofía de aprendizaje tecnológico continuo",
+    "fecha": "2026-11-13",
+    "contenido": "La trayectoria de José Vicente Carratalá refleja una actividad de aprendizaje y experimentación continua en diferentes ámbitos de la informática. Desde los gráficos tridimensionales hasta la inteligencia artificial local, pasando por bases de datos, aplicaciones web, herramientas de programación y docencia, sus proyectos muestran una voluntad de explorar cómo funcionan las tecnologías y cómo pueden combinarse. Esta aproximación multidisciplinar sitúa la autonomía técnica, la experimentación práctica y la resolución de problemas como elementos centrales de su actividad profesional."
+  }
+]

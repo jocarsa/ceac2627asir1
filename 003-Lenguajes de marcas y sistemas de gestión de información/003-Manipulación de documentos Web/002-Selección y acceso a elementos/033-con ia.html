@@ -1,0 +1,357 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de IMC</title>
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#dbeafe,#e0e7ff,#f5d0fe);
+      font-family:Arial,sans-serif;
+      color:#1e293b;
+      padding:20px;
+    }
+
+    .calculadora{
+      background:white;
+      width:100%;
+      max-width:460px;
+      padding:40px;
+      border-radius:24px;
+      box-shadow:0 20px 60px rgba(30,41,59,0.15);
+    }
+
+    .icono{
+      width:64px;
+      height:64px;
+      background:#eef2ff;
+      color:#6366f1;
+      border-radius:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:28px;
+      margin:0 0 10px 0;
+    }
+
+    .descripcion{
+      color:#64748b;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    label{
+      display:block;
+      font-weight:bold;
+      font-size:14px;
+      margin-bottom:10px;
+    }
+
+    .campo{
+      margin-bottom:22px;
+    }
+
+    .entrada{
+      display:flex;
+      align-items:center;
+      border:2px solid #e2e8f0;
+      border-radius:12px;
+      overflow:hidden;
+      transition:0.2s;
+    }
+
+    .entrada:focus-within{
+      border-color:#6366f1;
+      box-shadow:0 0 0 4px #6366f120;
+    }
+
+    input{
+      width:100%;
+      border:none;
+      outline:none;
+      padding:16px;
+      font-size:18px;
+      background:transparent;
+    }
+
+    .unidad{
+      padding:0 16px;
+      color:#94a3b8;
+      font-weight:bold;
+    }
+
+    button{
+      width:100%;
+      padding:17px;
+      border:none;
+      border-radius:12px;
+      background:#6366f1;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    button:hover{
+      background:#4f46e5;
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px #6366f140;
+    }
+
+    button:active{
+      transform:translateY(0);
+    }
+
+    output{
+      display:block;
+      margin-top:25px;
+    }
+
+    .resultado{
+      text-align:center;
+      padding:25px;
+      border-radius:16px;
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      animation:aparecer 0.4s ease;
+    }
+
+    .numero{
+      font-size:56px;
+      font-weight:800;
+      margin:10px 0;
+    }
+
+    .categoria{
+      display:inline-block;
+      padding:9px 18px;
+      border-radius:30px;
+      font-weight:bold;
+      font-size:14px;
+    }
+
+    .barra{
+      height:12px;
+      border-radius:20px;
+      background:linear-gradient(
+        to right,
+        #3b82f6 0%,
+        #38bdf8 18%,
+        #22c55e 35%,
+        #22c55e 52%,
+        #facc15 65%,
+        #f97316 80%,
+        #ef4444 100%
+      );
+      margin-top:30px;
+      position:relative;
+    }
+
+    .indicador{
+      position:absolute;
+      top:-6px;
+      width:5px;
+      height:24px;
+      background:#1e293b;
+      border:2px solid white;
+      border-radius:5px;
+      box-shadow:0 2px 5px #0003;
+    }
+
+    .leyenda{
+      display:flex;
+      justify-content:space-between;
+      font-size:11px;
+      color:#64748b;
+      margin-top:10px;
+    }
+
+    .nota{
+      text-align:center;
+      color:#94a3b8;
+      font-size:12px;
+      margin-top:24px;
+      line-height:1.5;
+    }
+
+    @keyframes aparecer{
+      from{
+        opacity:0;
+        transform:translateY(12px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculadora">
+
+    <div class="icono">♡</div>
+
+    <h1>Calculadora de IMC</h1>
+
+    <p class="descripcion">
+      Descubre tu índice de masa corporal
+      introduciendo tu altura y tu peso.
+    </p>
+
+    <div class="campo">
+      <label for="altura">¿Cuánto mides?</label>
+      <div class="entrada">
+        <input
+          type="number"
+          id="altura"
+          placeholder="1.75"
+          min="0.5"
+          max="2.5"
+          step="0.01"
+        >
+        <span class="unidad">metros</span>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="peso">¿Cuánto pesas?</label>
+      <div class="entrada">
+        <input
+          type="number"
+          id="peso"
+          placeholder="70"
+          min="1"
+          max="500"
+          step="0.1"
+        >
+        <span class="unidad">kg</span>
+      </div>
+    </div>
+
+    <button>Calcular mi IMC →</button>
+
+    <output aria-live="polite"></output>
+
+    <p class="nota">
+      El IMC es un indicador orientativo para adultos.
+      No sustituye una valoración médica.
+    </p>
+
+  </div>
+
+  <script>
+    // Primero selecciono los elementos
+    let altura = document.querySelector("#altura")
+    let peso = document.querySelector("#peso")
+    let boton = document.querySelector("button")
+    let salida = document.querySelector("output")
+
+    // Escucho el click del botón
+    boton.onclick = function(){
+
+      // Convierto las entradas en números
+      let metros = Number(altura.value)
+      let kilos = Number(peso.value)
+
+      // Compruebo que los datos son correctos
+      if(!Number.isFinite(metros) ||
+         !Number.isFinite(kilos) ||
+         metros < 0.5 || metros > 2.5 ||
+         kilos <= 0 || kilos > 500){
+
+        salida.textContent =
+          "Introduce una altura y un peso válidos."
+        return
+      }
+
+      // Calculo el índice de masa corporal
+      let indice = kilos / (metros * metros)
+
+      // Preparo las variables del resultado
+      let categoria = ""
+      let color = ""
+
+      // Clasifico el resultado
+      if(indice < 16){
+        categoria = "Delgadez severa"
+        color = "#2563eb"
+      }else if(indice < 17){
+        categoria = "Delgadez moderada"
+        color = "#0284c7"
+      }else if(indice < 18.5){
+        categoria = "Delgadez leve"
+        color = "#0891b2"
+      }else if(indice < 25){
+        categoria = "Peso normal"
+        color = "#16a34a"
+      }else if(indice < 30){
+        categoria = "Sobrepeso"
+        color = "#ca8a04"
+      }else if(indice < 35){
+        categoria = "Obesidad grado I"
+        color = "#ea580c"
+      }else if(indice < 40){
+        categoria = "Obesidad grado II"
+        color = "#dc2626"
+      }else{
+        categoria = "Obesidad grado III"
+        color = "#991b1b"
+      }
+
+      // Calculo la posición del indicador
+      // La barra representa valores de 10 a 45
+      let posicion = (indice - 10) / 35 * 100
+
+      // Evito que salga fuera de la barra
+      posicion = Math.max(0,Math.min(100,posicion))
+
+      // Muestro el resultado con estilo
+      salida.innerHTML = `
+        <div class="resultado">
+          <div>Tu índice de masa corporal</div>
+
+          <div class="numero" style="color:${color}">
+            ${indice.toFixed(1)}
+          </div>
+
+          <div class="categoria"
+               style="background:${color}18;color:${color}">
+            ${categoria}
+          </div>
+
+          <div class="barra">
+            <div class="indicador"
+                 style="left:calc(${posicion}% - 2px)">
+            </div>
+          </div>
+
+          <div class="leyenda">
+            <span>Delgadez</span>
+            <span>Normal</span>
+            <span>Sobrepeso</span>
+            <span>Obesidad</span>
+          </div>
+        </div>
+      `
+    }
+  </script>
+
+</body>
+</html>

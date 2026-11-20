@@ -1,0 +1,395 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Agenda</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6fb;
+      color: #243044;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      color: #8490a2;
+      margin: 8px 0 0;
+    }
+
+    #contador {
+      background: #e5edff;
+      color: #426fe4;
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    .panel {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 25px #2535550a;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #dce2ed;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #426fe4;
+    }
+
+    button {
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #426fe4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #305bd0;
+    }
+
+    form button {
+      grid-column: 1 / -1;
+    }
+
+    #buscador {
+      margin-bottom: 15px;
+    }
+
+    .contacto {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px;
+      border: 1px solid #edf0f5;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      transition: 0.2s;
+    }
+
+    .contacto:hover {
+      background: #f8faff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px #25355510;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: #e4edff;
+      color: #426fe4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .datos {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .nombre {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .email {
+      color: #7183a0;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .email a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .eliminar {
+      background: #fff0f0;
+      color: #d64b4b;
+      padding: 10px 13px;
+    }
+
+    .eliminar:hover {
+      background: #ffdede;
+    }
+
+    .vacio {
+      text-align: center;
+      color: #8490a2;
+      padding: 30px;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        margin: 10px auto;
+      }
+
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        gap: 10px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <header>
+      <div>
+        <h1>Mi Agenda</h1>
+        <p>Gestiona tus contactos fácilmente</p>
+      </div>
+
+      <span id="contador">0 contactos</span>
+    </header>
+
+    <section class="panel">
+      <h2>Añadir contacto</h2>
+
+      <form id="formulario">
+        <input
+          type="text"
+          id="nombre"
+          placeholder="Nombre completo"
+          required
+        >
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Correo electrónico"
+          required
+        >
+
+        <button type="submit">
+          + Añadir contacto
+        </button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Mis contactos</h2>
+
+      <input
+        type="search"
+        id="buscador"
+        placeholder="Buscar contactos..."
+      >
+
+      <div id="contactos"></div>
+    </section>
+
+  </main>
+
+  <script>
+
+    // Creo una agenda vacía
+    let agenda = [];
+
+    // Añado objetos al array
+    agenda.push({
+      "nombre": "Jose Vicente",
+      "email": "info@jocarsa.com"
+    });
+
+    agenda.push({
+      "nombre": "Juan",
+      "email": "juan@jocarsa.com"
+    });
+
+    // Referencias a elementos HTML
+    const contenedor = document.querySelector("#contactos");
+    const contador = document.querySelector("#contador");
+    const buscador = document.querySelector("#buscador");
+    const formulario = document.querySelector("#formulario");
+
+    // Función para dibujar la agenda
+    function dibujarAgenda() {
+
+      // Limpio el contenedor
+      contenedor.innerHTML = "";
+
+      // Obtengo el texto buscado
+      let busqueda = buscador.value.toLowerCase();
+
+      // Recorro el array de objetos
+      agenda.forEach(function(contacto, indice) {
+
+        // Compruebo si coincide con la búsqueda
+        if (
+          contacto.nombre.toLowerCase().includes(busqueda) ||
+          contacto.email.toLowerCase().includes(busqueda)
+        ) {
+
+          // Creo una tarjeta
+          let tarjeta = document.createElement("article");
+          tarjeta.className = "contacto";
+
+          // Creo el avatar
+          let avatar = document.createElement("div");
+          avatar.className = "avatar";
+
+          avatar.textContent = contacto.nombre
+            .trim()
+            .split(/\s+/)
+            .slice(0, 2)
+            .map(palabra => palabra.charAt(0))
+            .join("")
+            .toUpperCase();
+
+          // Creo el contenedor de datos
+          let datos = document.createElement("div");
+          datos.className = "datos";
+
+          // Creo el nombre
+          let nombre = document.createElement("div");
+          nombre.className = "nombre";
+          nombre.textContent = contacto.nombre;
+
+          // Creo el correo
+          let email = document.createElement("div");
+          email.className = "email";
+
+          let enlace = document.createElement("a");
+          enlace.href = "mailto:" + contacto.email;
+          enlace.textContent = contacto.email;
+
+          email.appendChild(enlace);
+
+          // Creo el botón de eliminar
+          let boton = document.createElement("button");
+          boton.className = "eliminar";
+          boton.textContent = "Eliminar";
+
+          boton.onclick = function() {
+
+            // Elimino el objeto del array
+            agenda.splice(indice, 1);
+
+            // Vuelvo a dibujar
+            dibujarAgenda();
+          };
+
+          // Construyo la tarjeta
+          datos.appendChild(nombre);
+          datos.appendChild(email);
+
+          tarjeta.appendChild(avatar);
+          tarjeta.appendChild(datos);
+          tarjeta.appendChild(boton);
+
+          // Introduzco la tarjeta en el HTML
+          contenedor.appendChild(tarjeta);
+        }
+      });
+
+      // Actualizo el contador
+      contador.textContent = agenda.length + " contactos";
+
+      // Muestro mensaje si no hay resultados
+      if (contenedor.children.length === 0) {
+        let mensaje = document.createElement("p");
+        mensaje.className = "vacio";
+        mensaje.textContent = "No hay contactos que mostrar";
+        contenedor.appendChild(mensaje);
+      }
+
+    }
+
+    // Añadir contactos
+    formulario.onsubmit = function(evento) {
+
+      evento.preventDefault();
+
+      let nombre = document.querySelector("#nombre").value.trim();
+      let email = document.querySelector("#email").value.trim();
+
+      // Añado un nuevo objeto al array
+      agenda.push({
+        "nombre": nombre,
+        "email": email
+      });
+
+      // Limpio el formulario
+      formulario.reset();
+
+      // Actualizo la pantalla
+      dibujarAgenda();
+    };
+
+    // Buscar contactos
+    buscador.oninput = function() {
+      dibujarAgenda();
+    };
+
+    // Dibujo la agenda por primera vez
+    dibujarAgenda();
+
+    // Muestro el array por consola
+    console.log(agenda);
+
+  </script>
+
+</body>
+</html>

@@ -1,2 +1,2 @@
 # Manipulación de estilos
-
+manipulación
